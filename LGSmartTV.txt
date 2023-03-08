@@ -83,7 +83,7 @@
 #A little bit of patience
 #And here's what you'll have to do:
 
-After creating a free account on NextDNS, go to DenyList tab and add the following address:
+#After creating a free account on NextDNS, go to DenyList tab and add the following address:
 0.0.0.0 cdpbeacon.lgtvcommon.com
 0.0.0.0 cdpsvc.lgtvcommon.com
 0.0.0.0 homeprv.lgtvcommon.com
@@ -137,8 +137,8 @@ My 2017 LG OLED TV updated over the weekend and welcomed me with new/different a
 0.0.0.0 us.rdx2.lgtvsdp.com
 #
 #Whitelist
-#
-0.0.0.0 ngfts.lge.com (if you want for LG Content Store images)
+#if you want for LG Content Store images, ngfts.lge.com must be whitelisted
+0.0.0.0 ngfts.lge.com
 0.0.0.0 us.lgtvsdp.com
 #
 #
