@@ -1,0 +1,188 @@
+#This has been copied from https://gist.github.com/wassname/78eeaaad299dc4cddd04e372f20a9aa7
+0.0.0.0 aic.recommend.lgtvcommon.com
+0.0.0.0 aic.sports.lgtviot.com
+0.0.0.0 images.pluto.tv
+0.0.0.0 discovery.meethue.com
+0.0.0.0 aic.homeprv.lgtvcommon.com
+0.0.0.0 aic.lgtviot.com
+0.0.0.0 us.emp.lgsmartplatform.com
+0.0.0.0 us.lgeapi.com
+0.0.0.0 aic.nudge.lgtvcommon.com
+0.0.0.0 www.ueiwsp.com
+0.0.0.0 unagi-na.amazon.com
+0.0.0.0 ipv6.unagi-na.amazon.com
+0.0.0.0 aic-gfts.lge.com
+0.0.0.0 aic-op-lss.lgthinq.com
+0.0.0.0 lss.lgthinq.com
+0.0.0.0 aic.api.lgtviot.com
+0.0.0.0 common.lgthinq.com
+0.0.0.0 canvas.tubitv.com
+0.0.0.0 qt2-ngfts.lge.com
+0.0.0.0 img.nvidiagrid.net
+0.0.0.0 cdn77.utomik.com
+0.0.0.0 i.ibb.co
+0.0.0.0 aic.wiseconfig.lgtvcommon.com
+0.0.0.0 images.redbox.com
+0.0.0.0 aic-ngfts.lge.com
+0.0.0.0 ngfts.lge.com
+0.0.0.0 lgtvonline.lge.com
+0.0.0.0 snu.lge.com
+0.0.0.0 aic.rdl.lgtvcommon.com
+0.0.0.0 developers.google.com
+0.0.0.0 service.idsync.analytics.yahoo.com
+0.0.0.0 mindfieldonline.com
+0.0.0.0 us.ibs.lgappstv.com
+0.0.0.0 nevoai-iothub-54-prod.azure-devices.net
+0.0.0.0 threeplr-avuypkjypveaj-0.api.amazonvideo.com
+0.0.0.0 cloudfront.xp-assets.aiv-cdn.net
+0.0.0.0 cf-trickplay.aux.pv-cdn.net
+0.0.0.0 s3-iad-2.cf.dash.row.aiv-cdn.net
+0.0.0.0 api.us-east-1.aiv-delivery.net
+0.0.0.0 us.rdx2.lgtvsdp.com
+
+#On the above gist, there have been a number of comments and hosts addons, as follows:
+#Are these worth adding? Someone on redit claims blocking these names will "fix" ads:
+#https://www.reddit.com/r/LGOLED/comments/r8gi60/guide_how_to_block_ads_on_webos_without_pihole/
+0.0.0.0 cdpsvc.lgtvcommon.com
+0.0.0.0 homeprv.lgtvcommon.com
+0.0.0.0 nudge.lgtvcommon.com
+0.0.0.0 rdl.lgtvcommon.com
+0.0.0.0 recommend.lgtvcommon.com
+0.0.0.0 lgsmartad.com
+
+#U have to disable QuickStart+ because this cache a lot
+#After disable this, shut down tv and wait till 10 sec to power on.
+#Repeat that 2 times and all caches will be cleaned.
+#Also disable iPV6 on LG TV
+#I use this on LG C1
+0.0.0.0 cdpbeacon.lgtvcommon.com
+0.0.0.0 cdpsvc.lgtvcommon.com
+0.0.0.0 homeprv.lgtvcommon.com
+0.0.0.0 nudge.lgtvcommon.com
+0.0.0.0 rdl.lgtvcommon.com
+0.0.0.0 recommend.lgtvcommon.com
+0.0.0.0 lgsmartad.com
+
+#I'm in France, here's what i used; it seems to hide the "trending" widget, even if entering the application "store" seems to make it come back.
+#I did not block the service endpoint as i suspect it will be required for firmware updates.
+
+0.0.0.0 fr.rdx2.lgtvsdp.com
+0.0.0.0 fr.ibs.lgappstv.com
+0.0.0.0 discovery.meethue.com
+0.0.0.0 eic.cdpbeacon.lgtvcommon.com
+0.0.0.0 eic.cdpsvc.lgtvcommon.com
+0.0.0.0 eic.homeprv.lgtvcommon.com
+0.0.0.0 eic.nudge.lgtvcommon.com
+0.0.0.0 eic.rdl.lgtvcommon.com
+0.0.0.0 eic.recommend.lgtvcommon.com
+
+#After a few hours doing tests, I found a way to block all ads on my TV,
+#which is running webOS 6 (LG C1), and the best thing is: I didn't need to change settings on my router or run Pi-Hole
+#To do this, here's what you'll need:
+#A Free-tier NextDNS account
+#A little bit of patience
+#And here's what you'll have to do:
+
+After creating a free account on NextDNS, go to DenyList tab and add the following address:
+0.0.0.0 cdpbeacon.lgtvcommon.com
+0.0.0.0 cdpsvc.lgtvcommon.com
+0.0.0.0 homeprv.lgtvcommon.com
+0.0.0.0 nudge.lgtvcommon.com
+0.0.0.0 rdl.lgtvcommon.com
+0.0.0.0 recommend.lgtvcommon.com
+0.0.0.0 lgsmartad.com
+
+#Now, go to Setup tab and link your IP address to the DNS. Copy the DNS IP provided on this page, you'll need to insert on your TV
+#==========
+#On your TV, go to General -> Network -> Wi-fi Connection -> Other Network -> Advanced Wi-Fi Settings
+#Turn off IPv6 (If you don't, it won't block the ads)
+#Click on DNS Server and insert the DNS IP that NextDNS gave to you.
+#Disconnect and reconnect from your Wi-Fi to clear your previous DNS cache.
+#That's it!
+#Enjoy a cleaner start page without the Trending Now bar and all the other annoyances
+#==========
+
+#About the service.lgtvcommon.com address
+#Adding this IP to DenyList, it will break the AccuWeather widget, but it will also block 100% of the annoyances from webOS.
+#Otherwise, the Trending Now bar on the top and all 3rd party recommendations (YouTube recommended videos, Prime recommended videos, etc.)
+#will still be blocked, but LG recommendations (e.g. LG Christmas recommended movies) will not
+0.0.0.0 service.lgtvcommon.com
+
+
+#LG OLED C1 C2 2022 Youtube Ad free Homebrew, block all ads / ohne Werbung (rootmy tv)
+#https://www.youtube.com/watch?v=Zoc9Bt9TuZA
+
+
+#LG TV has changed ad providers - January 2022
+My 2017 LG OLED TV updated over the weekend and welcomed me with new/different ads that evades previous blocks.
+
+
+
+#06.05.03 Update for 2017 LG B7/C7/E7/G7/W7 OLED TVs
+#Automatic Content Recognition (ACR) from Gracenote to Alphonso
+#Advertising partner from Unruly to Alphonso (US/Canada Only)
+#
+#This list is what I've seen so far, network request-wise, come over from the TV. I do believe some of these are repeats from some of the Smart TV block list but some are definitely new.
+#Here is what I've figured out so far, and I'm sure there is an easy Regex you could create for some of these:
+#
+#Block
+#
+0.0.0.0 aic-ngfts.lge.com
+0.0.0.0 aic.cdpbeacon.lgtvcommon.com
+0.0.0.0 bl-server.alphonso.tv
+0.0.0.0 clockskew.alphonso.tv
+0.0.0.0 prov-lg.alphonso.tv
+0.0.0.0 us.ibs.lgappstv.com
+0.0.0.0 us.info.lgsmartad.com
+0.0.0.0 us.rdx2.lgtvsdp.com
+#
+#Whitelist
+#
+0.0.0.0 ngfts.lge.com (if you want for LG Content Store images)
+0.0.0.0 us.lgtvsdp.com
+#
+#
+#Unsure - Probably will be more outside of the 300 range
+#
+0.0.0.0 tkacr308.alphonso.tv
+0.0.0.0 tkacr312.alphonso.tv
+0.0.0.0 tkacr324.alphonso.tv
+0.0.0.0 tkacr327.alphonso.tv
+0.0.0.0 tkacr342.alphonso.tv
+0.0.0.0 tkacr346.alphonso.tv
+0.0.0.0 tkacr351.alphonso.tv
+0.0.0.0 tkacr386.alphonso.tv
+#
+#
+#Here is what I have found in a pre-existing block list:
+#
+#https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+#
+0.0.0.0 acrdb.alphonso.tv
+0.0.0.0 ads.alphonso.tv
+0.0.0.0 alphonso.tv
+0.0.0.0 api.alphonso.tv
+0.0.0.0 assets.alphonso.tv
+0.0.0.0 bwlkup.alphonso.tv
+0.0.0.0 clockskew.alphonso.tv
+0.0.0.0 degea.alphonso.tv
+0.0.0.0 demo.alphonso.tv
+0.0.0.0 dimaria.alphonso.tv
+0.0.0.0 insights.alphonso.tv
+0.0.0.0 koudas.alphonso.tv
+0.0.0.0 neymar.alphonso.tv
+0.0.0.0 optout.alphonso.tv
+0.0.0.0 ppjs.alphonso.tv
+0.0.0.0 prov-lg.alphonso.tv
+0.0.0.0 prov.alphonso.tv
+0.0.0.0 proxy.alphonso.tv
+0.0.0.0 rtbdev4.alphonso.tv
+0.0.0.0 sync.alphonso.tv
+0.0.0.0 tn.alphonso.tv
+0.0.0.0 tr.alphonso.tv
+0.0.0.0 tvads.alphonso.tv
+0.0.0.0 villa.alphonso.tv
+0.0.0.0 web2.alphonso.tv
+0.0.0.0 www.alphonso.tv
+#
+#I am tempted to just block the whole Alphonso.tv domain.
